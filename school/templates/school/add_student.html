@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div style="text-align: center;
+
+background-color:#012365 ; color:white;">
+    <h1>Add Student</h1>
+</div>
+
+
+<form method="post" style="margin:50px;">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-success">Add Student</button>
+</form>
+<div style="padding:10px;">
+    <a href="{% url 'school_desc' school.id %}" class="btn btn-primary">Back to School Details</a>
+</div>
+
+{% endblock %}

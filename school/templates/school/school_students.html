@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+
+<div class="mb-3">
+    <h1>Students of {{ school.name }}</h1>
+</div>
+
+
+<div class="alert alert-primary" role="alert">
+    <ul>
+        {% for student in students %}
+            <li>{{ student.first_name }} {{ student.last_name }}</li>
+            <!-- Add more student details here -->
+        {% empty %}
+            <li>No students found for this school.</li>
+        {% endfor %}
+    </ul>
+</div>
+<a href="{% url 'school' %}" type="button" class="btn btn-warning">Back to All Schools</a>
+
+{% endblock %}

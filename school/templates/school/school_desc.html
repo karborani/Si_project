@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <form>
+        <h2 class="text-center">School Details</h2>
+        <hr>
+
+        <section>
+
+            <div class="row p-5 ">
+
+                <div class="card mb-3 w-100">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/school.png'%}" class="card-img" alt="..." style="width: 16rem;">
+                        </div>
+                        <div class="col-md-8">
+
+                            <div class="card-body">
+                                <h5 class="card-title" id="productName">{{school.name}}</h5>
+                                <hr>
+                                <p class="card-text" id="description">{{school.description}}</p>
+                                <hr>
+                                <p class="card-text" id="description">{{school.phone}}</p>
+                                <hr>
+                                <p class="card-text" id="description">{{school.email}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'school_students' school.id %}" class="btn btn-primary">View Students</a>
+                                <a href="{% url 'add_student' school.id %}" class="btn btn-success">Add Student</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </form>
+
+</div>
+
+{% endblock %}

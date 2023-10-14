@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <form>
+        <h2 class="text-center">All School</h2>
+        <hr>
+        <!-- Add a button to create a new school -->
+        <a href="{% url 'create_school' %}" class="btn btn-warning my-form container-fluid">Add New School</a>
+
+        <section>
+            <div class="container-fluid">
+                <div class="row p-5">
+                    {% for school in schools %}
+                        <div>
+                            <div class="card m-2" style="width: 18rem;">
+                                <img src="{{ school.image.url }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ school.name }}</h5>
+                                    <p class="card-text">{{ school.description }}</p>
+                                    <a href="{% url 'school_desc' school.id %}" class="btn btn-warning">Show Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+{% endblock %}

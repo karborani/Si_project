@@ -1,0 +1,60 @@
+{% load static %}
+
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top bg-dark">
+    <a class="navbar-brand" href="{% url 'school' %}">
+        <img src="{% static 'img/school.png' %}" class="img-brand" alt="school">
+        Shcool
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li
+            {% if '/' == request.path %}
+            class="nav-item active"
+            {% else %}
+            class="nav-item"
+            {% endif %}
+            >
+                <a class="nav-link" href="{% url 'school' %}">Schools <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li
+            {%if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path %}
+            class="nav-item dropdown active"
+            {% else %}
+            class="nav-item dropdown"
+            {% endif %}
+            >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Join us
+                </a>
+                <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'signin' %}">Sign in</a>
+                    <a class="dropdown-item" href="{% url 'signup' %}">Sign up</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                </div>
+            </li>
+
+            <li class="nav-item" id="school-nav-item">
+                <a class="nav-link" href="{% url 'all_schools' %}">Add School</a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="btn-group" role="group">
+                <a href="{% url 'search' %}" class="btn btn-warning my-2 my-sm-0" type="submit">Search</a>
+            </div>
+
+        </form>
+    </div>
+</nav>

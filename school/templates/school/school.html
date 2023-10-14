@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+
+    <!--jumbotron 1-->
+    <section>
+        <div class="jumbotron jumbotron-fluid p-3 m-0 text-center">
+            <div class="d-inline-block align-top">
+                <h1 class="display-4">Welcome to Schools</h1>
+            </div>
+            <div class="d-inline-block">
+                <img src="{% static 'img/children.png' %}" alt="children" style="width: 250px;">
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <!--new product-->
+    <section>
+        <h1 class="text-center">All Schools</h1>
+        <div class="container-fluid">
+            <div class="row p-5" style="padding-left: 17% !important;">
+
+
+        {% for schools in school|slice:':6' %}
+            <div>          
+                <div class="card m-2" style="width: 15rem;">
+                    <img src="{{schools.image.url}}" class="card-img-top" alt="photo">
+                    <div class="card-body">
+                        <h5 class="card-title">{{schools.name}}</h5>
+                        <p class="card-text text-truncate">{{schools.description}}.</p>
+                        <a href="{% url 'school_desc' school_id=schools.id %}" class="btn btn-warning">Show Details</a>
+                    </div>
+                </div>
+            </div> 
+
+        {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{% endblock content %}
