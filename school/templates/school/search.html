@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
 
-<div class="my-form container p-5 my-5 rounded border border-warning">
+<div id="docsearch" class="my-form container p-5 my-5 rounded border border-warning " data-bd-docs-version='5.3'>
     <form action="{% url 'school' %}">
         <h2 class="text-center">Search</h2>
         <hr>

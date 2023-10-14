@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Remove Student</h1>
+<p>Are you sure you want to remove {{ student.first_name }} {{ student.last_name }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Removal</button>
+</form>
+
+<a href="{% url 'school_students' school.id %}" class="btn btn-primary">Cancel</a>
+
+{% endblock %}

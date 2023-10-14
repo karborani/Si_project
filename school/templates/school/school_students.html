@@ -3,21 +3,26 @@
 {% block content %}
 
 
-<div class="mb-3">
-    <h1>Students of {{ school.name }}</h1>
-</div>
-
-
-<div class="alert alert-primary" role="alert">
-    <ul>
+<table>
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for student in students %}
-            <li>{{ student.first_name }} {{ student.last_name }}</li>
-            <!-- Add more student details here -->
-        {% empty %}
-            <li>No students found for this school.</li>
+            <tr>
+                <td>{{ student.first_name }} {{ student.last_name }}</td>
+                <td>
+                    <a href="{% url 'remove_student' student.id %}" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
-</div>
-<a href="{% url 'school' %}" type="button" class="btn btn-warning">Back to All Schools</a>
+    </tbody>
+</table>
 
+<div style="padding: 5rem;">
+    <a href="{% url 'school' %}" type="button" class="btn btn-warning">Back to All Schools</a>
+</div>
 {% endblock %}

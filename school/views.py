@@ -26,11 +26,11 @@ def school(request):
 def school_desc(request, school_id):
     all_schools = Schools.objects.all()
     school = get_object_or_404(Schools, pk=school_id)
-    # students = Student.objects.filter(school=school)
+    students = Student.objects.filter(school=school)
 
     context = {
         'school': school,
-        # 'students': students,
+        'students': students,
         'all_schools': all_schools,
     }
 
@@ -101,5 +101,17 @@ def add_student(request, school_id):
 
 
 
+def remove_student(request, student_id):
+    # Retrieve the student and school information
+    student = get_object_or_404(Student, pk=student_id)
+    school = student.school  # Assuming there's a ForeignKey relationship between Student and School
 
+    if request.method == 'POST':
+        student.delete()
+        return redirect('school_students', school_id=school.id)
 
+    context = {
+        'student': student,
+        'school': school,
+    }
+    return render(request, 'school/remove_student.html', context)

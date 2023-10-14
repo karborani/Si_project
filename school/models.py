@@ -21,7 +21,7 @@ class Schools(models.Model):
 class Student(models.Model):
     first_name = models.CharField('First Name', max_length=32, blank=True,)
     last_name = models.CharField("Last Name", max_length=64,blank=False )
-    date_of_birth = models.DateField(null=True , blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=25)
     # address = models.ForeignKey(Schools, on_delete=models.CASCADE )
     school = models.ForeignKey(Schools, on_delete=models.CASCADE,null=True, blank=True)
